@@ -60,12 +60,14 @@ func convert(r io.Reader) (*profile.Profile, error) {
 			return nil, fmt.Errorf("failed to find count in %s: %w", fields[1], err)
 		}
 
+		locs := strings.Split(fields[0], ";")
 		sample := &profile.Sample{
-			Location: make([]*profile.Location, 0),
+			Location: make([]*profile.Location, 0, len(locs)),
 			Value:    []int64{count},
 		}
 
-		for _, name := range strings.Split(fields[0], ";") {
+		for i := len(locs)-1; i >= 0; i-- {
+			name := locs[i]
 			if _, ok := funLookup[name]; !ok {
 				funLookup[name] = &profile.Function{
 					ID:   id,

@@ -26,4 +26,5 @@ lab001;[unknown];__libc_start_main;main;write_log;fsync 136
 	require.Len(t, p.Sample, 4)
 
 	require.Equal(t, p.Sample[0].Location[0], p.Location[0])
+	require.Equal(t, "__write", p.Sample[0].Location[0].Line[0].Function.Name)
 }
