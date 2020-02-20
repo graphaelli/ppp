@@ -61,7 +61,7 @@ func convert(r io.Reader) (*profile.Profile, error) {
 		}
 
 		sample := &profile.Sample{
-			Location: make([]*profile.Location, 9),
+			Location: make([]*profile.Location, 0),
 			Value:    []int64{count},
 		}
 
