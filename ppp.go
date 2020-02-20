@@ -40,7 +40,7 @@ func convert(r io.Reader) (*profile.Profile, error) {
 
 	funLookup := make(map[string]*profile.Function)
 	locLookup := make(map[string]*profile.Location)
-	var id uint64 = 0
+	var id uint64 = 1
 
 	b := bufio.NewReader(r)
 	for {
